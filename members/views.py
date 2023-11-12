@@ -24,10 +24,12 @@ def dashboard(request):
         if request.method=='POST':
             form = TaskForm(request.POST)
             if form.is_valid():
+                
                 task = form.save(commit=False)
+                
                 task.user = user
                 form.save()
-            messages.info(request, 'Created new contact')
+                messages.info(request, 'Created new contact')
             return redirect('/')
 
         context = {'tasks':tasks, 'form':form, 'total_count':total_count}

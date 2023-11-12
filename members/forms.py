@@ -6,6 +6,8 @@ from django import forms
 
 from .models import *
 
+
+
 class TaskForm(forms.ModelForm):
 
     class Meta:
@@ -24,3 +26,8 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
+
+class SubcribersForm(forms.ModelForm):
+    class Meta: 
+        model = Subscribers
+        fields = ['email', ]

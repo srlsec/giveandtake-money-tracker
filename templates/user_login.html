@@ -5,6 +5,16 @@
 {% block content %}
 
 <style>
+		.login-section{
+		margin-bottom: 100px;
+	}
+	body{
+        background-color: whitesmoke;
+        font-family: 'Poppins', sans-serif;
+    }
+	.title-blue{
+		color: #272643 !important;
+	}
     .user_card {
 			width: 350px;
 			margin-top: 90px;
@@ -18,8 +28,6 @@
 			/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-			border-radius: 5px;
-
 		}
 
 		.form_container {
@@ -46,6 +54,7 @@
 			padding: 0 2rem;
 		}
 		.input-group-text {
+			height: 40px;
 			background: #36355d !important;
 			color: white !important;
 			border: 0 !important;
@@ -67,7 +76,7 @@
 			height: 50vh;
 			color: white;
 			
-			background-color: #272643;
+			background-color: #ffffff;
 
 		}
 		@media screen and (min-width:767px){
@@ -115,13 +124,13 @@
 	</style>
 
 
-<div class="container h-100">
+<div class="container h-100 login-section">
     <div class="d-flex justify-content-center h-100 login-container">
-        <div class="user_card">
+        <div class="user_card border border-radius">
             <div class="d-flex justify-content-center">
 
 
-                <h3 class="text-white" id="form-title">Login</h3>
+                <h3 class="title-blue" id="form-title">Login</h3>
             </div>
             <div class="d-flex justify-content-center form_container">
                 <form method="POST" action="">
@@ -147,12 +156,12 @@
             </div>
     
             <div class="mt-4">
-                <div class="d-flex justify-content-center links">
-                    Don't have an account? <a href="{% url 'members:register' %}" class="ml-2 text-white">Sign Up</a>
+                <div class="d-flex justify-content-center links text-secondary">
+                    Don't have an account? <a href="{% url 'members:register' %}" class="ml-2 text-secondary">Sign Up</a>
                 </div>
 				<br>
 				<div class="d-flex justify-content-center links">
-                    <a href="{% url 'members:register' %}" class="ml-2 text-white">Forgot Username/Password?</a>
+                    <a href="{% url 'members:register' %}" class="ml-2 text-secondary">Forgot Username/Password?</a>
                 </div>
         
             </div>

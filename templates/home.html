@@ -6,6 +6,12 @@
 
 
 <style>
+      .border{
+        border: 1px solid #b7bbbe !important;
+    }
+    .border-radius{
+        border-radius: 10px !important;
+    }
   body{
         background-color: whitesmoke;
         font-family: 'Poppins', sans-serif;
@@ -46,11 +52,13 @@
 
       .view-text {
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
 
       .view,
       .create-new-sec {
-        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
         border-radius: 10px;
         height: 70vh !important;
         overflow-x: hidden;
@@ -134,7 +142,7 @@
     src: url(../static//fonts/Butterscotch.ttf);
 }
     .title{
-        margin: 50px 0;
+        margin: 35px 0;
         font-family: "ButterScotch",sans-serif;
     }
     .img-thumbnail {
@@ -143,6 +151,15 @@
 }
 
 
+      @media screen and (max-width: 767px) {
+        body{
+          overflow-x: hidden !important;
+        }
+        .home-main .row{
+          flex-direction: column !important;
+          display: flex;
+        }
+      }
       @media screen and (max-width: 991px) {
       
         .container {
@@ -181,7 +198,7 @@
         border: none;
       }
       .container {
-        margin: 120px auto;
+        margin-bottom: 40px;
       }
       .bi-list {
         font-size: 28px;
@@ -197,14 +214,14 @@
 
 </style>
 
-<div class="about-developers">
+<div>
   <h1 class=" text-center title">Hi, {{request.user}}</h1>
 </div>
 
-<div class="container">
+<div class="container home-main">
     <div class="row">
       <div class="col">
-        <div class="card text-dark mb-3 create-new-sec">
+        <div class="card text-dark mb-3 create-new-sec border border-radius">
           <h5 class="card-header">Create new contact</h5>
           <div class="card-body">
             <div
@@ -238,6 +255,21 @@
                     </div>
                     {{form.amount}}
                   </div>
+<!-- 
+                  <select name="function_type">
+                    {% for id, choice in form.FunctionType %}
+                        <option value="{{ id }}"{% if form.function_type == id %} selected="selected"{% endif %}>{{ choice }}</option>
+                    {% endfor %}
+                </select> -->
+
+                  <select name="food_status" class="form-select" aria-label="Default select example">
+                    <option value="1" selected>Kalyanam</option>
+                    <option value="2">Payat</option>
+
+                    <!-- <option value="1" {% if sort == 'name' %}selected{% endif %}>name</option>
+                    <option value="age" {% if sort == 'age' %}selected{% endif %}>age</option> -->
+
+                  </select>
 
                   <!-- <label class="col-12 col-sm-2">Rating</label>
 <input type="radio" class="form-control radio-inline col-sm-1 mt-1" name="radoption" value=" 1">1
@@ -259,7 +291,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card view text-dark mb-3">
+        <div class="card view text-dark mb-3 border border-radius">
           <h5 class="card-header view-text">View contacts <span class="badge">{{total_count}}</span></span
             ></h5>
           <div class="card-body">
@@ -296,6 +328,11 @@
                       class="btn btn-sm"
                       href="{% url 'members:update_task' task.id %}"
                       ><i class="bi bi-pencil-square"></i
+                    ></a>
+                    <a
+                      class="btn btn-sm"
+                      href="{% url 'members:update_task' task.id %}"
+                      ><i class="bi bi-eye"></i
                     ></a>
 
                     <button

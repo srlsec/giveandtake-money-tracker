@@ -9,6 +9,9 @@ class Task(models.Model):
     amount = models.CharField(max_length=200)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+    
+    # function_type = models.CharField(max_length=50, default=1)
+    # function_type = models.CharField(max_length=10, default='None')
 
     def __str__(self):
         return self.name
@@ -21,3 +24,10 @@ class Members(models.Model):
 
     def __str__(self):
         return self.username
+
+class Subscribers(models.Model):
+    email = models.EmailField(null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__self(self):
+        return self.email
