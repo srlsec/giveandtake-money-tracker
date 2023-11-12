@@ -1,0 +1,388 @@
+{% extends 'base.html' %}
+
+{% block title %}Home {% endblock %}
+
+{% block content %}
+
+
+<style>
+  body{
+        background-color: whitesmoke;
+        font-family: 'Poppins', sans-serif;
+    }
+    .create-contact {
+        background-color: #272643;
+        color: white !important;
+        padding: 15px 20px;
+        transition: all ease-in-out 0.3s;
+      }
+
+      .create-contact:hover {
+        background-color: #323050;
+        color: #fff;
+        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+      }
+
+      .input-group span {
+        width: 38px;
+        height: 38px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        background-color: #272643;
+        border: none;
+        justify-content: center;
+      }
+      .input-group span i {
+        color: white;
+        font-size: 14px;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .view-text {
+        width: 100%;
+      }
+
+      .view,
+      .create-new-sec {
+        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+        border-radius: 10px;
+        height: 70vh !important;
+        overflow-x: hidden;
+      }
+
+      .input-group {
+        margin: 10px 0;
+      }
+
+      .form-control {
+        padding: 15px;
+        border-radius: 50px;
+      }
+
+      .btn-search {
+        height: 54px;
+        width: 100px;
+        color: white;
+        background-color: #272643;
+        border: 1px solid rgb(205, 205, 205);
+        border-radius: 50px;
+        transition: all ease-in-out 0.4s;
+      }
+      .btn-search:hover {
+        background-color: #323050;
+        color: #fff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      .logout-btn {
+        background-color: white;
+        border: 1px solid rgb(205, 205, 205);
+        padding: 10px 50px;
+        border-radius: 50px;
+        transition: all ease-in-out 0.4s;
+      }
+
+      .logout-btn:hover {
+        background-color: #272643;
+        color: white;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+
+      input::placeholder {
+        color: #d3d3d3;
+      }
+
+      .submit {
+        background-color: #6ba3e8;
+      }
+
+      .center-column {
+        width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 3px;
+        /* box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75); */
+      }
+
+      .item-row {
+        background-color: #906abd;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 16px;
+        box-shadow: 0px -1px 10px -4px rgba(0, 0, 0, 0.75);
+      }
+      .money-tracker {
+        font-weight: 400;
+      }
+
+      @font-face {
+    font-family: "ButterScotch";
+    src: url(../static//fonts/Butterscotch.ttf);
+}
+    .title{
+        margin: 50px 0;
+        font-family: "ButterScotch",sans-serif;
+    }
+    .img-thumbnail {
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+
+      @media screen and (max-width: 991px) {
+      
+        .container {
+          padding: 40px 10px;
+          margin: 0 auto !important;
+        }
+      }
+
+      .btn-sm {
+        background-color: #272643 !important;
+        color: white !important;
+      }
+
+      .list-group-item {
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .delete-sec-btn:nth-child(2) {
+        background-color: #212038;
+        color: #fff !important;
+      }
+      .delete-sec-btn:nth-child(3) {
+        color: white !important;
+        background-color: transparent;
+        border: 1px solid #212038;
+      }
+      .badge {
+        background-color: #212038;
+        color: white;
+      }
+      .card-header {
+        background-color: white;
+        padding: 20px;
+        border: none;
+      }
+      .container {
+        margin: 120px auto;
+      }
+      .bi-list {
+        font-size: 28px;
+      }
+
+      .menu-icon::after {
+        content: "\2630"; /* Unicode character for the menu icon */
+      }
+
+      .menu-icon.closed::after {
+        content: "\2715"; /* Unicode character for the close icon */
+      }
+
+</style>
+
+<div class="about-developers">
+  <h1 class=" text-center title">Hi, {{request.user}}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card text-dark mb-3 create-new-sec">
+          <h5 class="card-header">Create new contact</h5>
+          <div class="card-body">
+            <div
+              class="accordion-collapse collapse show"
+              id="collapse-create"
+            >
+              <div class="accordion-body">
+                <form method="POST" action="/">
+                  {% csrf_token %}
+                  <div class="input-group mb-3">
+                    <div class="input-group-append">
+                      <span class="input-group-text"
+                        ><i class="fas fa-user"></i
+                      ></span>
+                    </div>
+                    {{form.name}}
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text"
+                        ><i class="bi bi-geo-alt-fill"></i
+                      ></span>
+                    </div>
+                    {{form.address}}
+                  </div>
+                  <div class="input-group mb-2">
+                    <div class="input-group-append">
+                      <span class="input-group-text"
+                        ><i class="bi bi-currency-rupee"></i
+                      ></span>
+                    </div>
+                    {{form.amount}}
+                  </div>
+
+                  <!-- <label class="col-12 col-sm-2">Rating</label>
+<input type="radio" class="form-control radio-inline col-sm-1 mt-1" name="radoption" value=" 1">1
+<input type="radio" class="form-control radio-inline col-sm-1 mt-1" name="radoption" value=" 2" checked>2 -->
+
+                  <div
+                    class="d-flex justify-content-center mt-3 login_container"
+                  >
+                    <input
+                      class="btn login_btn create-contact"
+                      type="submit"
+                      value="Create"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card view text-dark mb-3">
+          <h5 class="card-header view-text">View contacts <span class="badge">{{total_count}}</span></span
+            ></h5>
+          <div class="card-body">
+            <form action="{% url 'members:dashboard' %}" method="get">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  id="search"
+                  class="form-control"
+                  name="search_query"
+                />
+
+                <button type="submit" class="btn-search" value="Search">
+                  Search
+                </button>
+              </div>
+            </form>
+
+            <div class="contact-details">
+              <ul class="list-group">
+                {% for task in tasks %}
+                <li class="list-group-item">
+                  {% if task.complete == True %}
+                  <strike>{{task.name}} - {{task.amount}}</strike>
+                  {% else %}
+                  <span
+                    >{{task.name}} -
+                    <span class="badge">₹ {{task.amount}}</span></span
+                  >
+                  {% endif %}
+                  <div class="contact-user-button">
+                    <a
+                      class="btn btn-sm"
+                      href="{% url 'members:update_task' task.id %}"
+                      ><i class="bi bi-pencil-square"></i
+                    ></a>
+
+                    <button
+                      class="btn btn-sm"
+                      id="btn_delete"
+                      type="button"
+                      data-bs-url="{% url 'members:delete_task' task.id %}"
+                      class="btn p-0"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modal-delete"
+                      data-bs-foodid="{{ task.id }}"
+                      data-bs-foodname="{{ task }}"
+                    >
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div id="modal-delete" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete contact</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn delete-sec-btn"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <form>
+            {% csrf_token %}
+            <button id="food-delete" class="btn delete-sec-btn" type="submit">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    //Query All input fields
+    var form_fields = document.getElementsByTagName("input");
+    form_fields[3].placeholder = "Name";
+    form_fields[4].placeholder = "Address";
+    form_fields[5].placeholder = "Amount";
+
+    for (var field in form_fields) {
+      form_fields[field].className += " form-control form-btn";
+    }
+</script>
+
+<!-- Delete contact Popup -->
+<script>
+  const deleteModal = document.getElementById("modal-delete");
+
+  deleteModal.addEventListener("show.bs.modal", (event) => {
+    const button = event.relatedTarget;
+    const foodName = button.getAttribute("data-bs-foodname");
+    const url = button.getAttribute("data-bs-url");
+    const modalBodyInput = deleteModal.querySelector(".modal-body ");
+
+    modalBodyInput.textContent = `Confirm deletion of ${foodName}`;
+
+    const deleteForm = deleteModal.querySelector("form");
+    deleteForm.setAttribute("action", url);
+    deleteForm.setAttribute("method", "post");
+  });
+</script>
+
+{% endblock %}

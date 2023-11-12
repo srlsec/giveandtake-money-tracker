@@ -1,0 +1,160 @@
+<style>
+  /* .navbar {
+    background-color: #fff;
+    padding: 30px 3rem;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  } */
+  .navbar {
+      width: 90%;
+      padding: 30px 20px;
+      border-radius: 20px;
+      background-color: #fff;
+      border-color: #212038;
+      margin: 20px auto;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+  .nav-link {
+    color: #212038 !important;
+    position: relative;
+  }
+  .nav-link:after {
+    content: "";
+    background-color: #212038;
+    position: absolute;
+    width: 0;
+    height: 1px;
+    left: 0;
+    transition: all ease-in-out 0.4s;
+    bottom: -9px;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .logout-btn {
+        background-color: white;
+        border: 1px solid rgb(205, 205, 205);
+        padding: 10px 50px;
+        margin-left: 20px;
+        border-radius: 50px;
+        transition: all ease-in-out 0.4s;
+      }
+
+      .logout-btn:hover {
+        background-color: #272643;
+        color: white;
+      }
+      @media screen and (max-width:991px){
+        .logo{
+          display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+        }
+        .navbar{
+          padding: 30px 0 !important;
+          justify-content: space-between;
+          display: flex;
+        }
+        .navbar-toggler:focus,
+      .navbar-toggler:active,
+      .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      .menu-icon::after {
+        content: "\2630"; /* Unicode character for the menu icon */
+      }
+
+      .menu-icon.closed::after {
+        content: "\2715"; /* Unicode character for the close icon */
+      }
+      .navbar .container-fluid {
+        text-align: right !important;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        flex-direction: column;
+      }
+      .nav-link:after{
+        all: unset;
+      }
+      .logo img{
+        width: 150px;
+      }
+      }
+</style>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="logo">
+      <a class="navbar-brand text-white" href="{% url 'members:dashboard' %}">
+        <img
+          src="../../static/images/logo/svg/logo-no-background.svg"
+          alt=""
+          width="230"
+      /></a>
+      <button
+        class="navbar-toggler menu-icon"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      ></button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            href="{% url 'members:about_us' %}"
+            class="nav-link font-weight-bold"
+            >About Us</a
+          >
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a
+            href="{% url 'members:user_profile' %}"
+            class="nav-link font-weight-bold"
+            >My Profile</a
+          >
+        </li>
+        {% endif %}
+      </ul>
+      {% if user.is_authenticated %}
+      <!-- <b class="text-dark">Hi, {{request.user}}</b> -->
+
+      <ul class="navbar-nav">
+        <!-- Avatar -->
+        <li class="nav-item dropdown">
+          <a class="  d-flex align-items-center" href="{% url 'members:user_profile' %}" id="navbarDropdownMenuLink"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="rounded-circle"
+              height="45" alt="Avatar" />
+          </a>
+
+        </li>
+      </ul>
+
+      <a
+        class="btn logout-btn align-right"
+        href="javascript:{document.getElementById('logout').submit()}"
+        >Logout</a
+      >
+      <form action="{% url 'members:logout' %}" method="POST" id="logout">
+        {% csrf_token %}
+        <input type="hidden" />
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+<script>
+        $(document).ready(function () {
+        $(".navbar-toggler").click(function () {
+          $(".navbar-toggler").toggleClass("closed");
+        });
+      });
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+      integrity="sha512-oAvZuuYVzkcTc2dH5z1ZJup5OmSQ000qlfRvuoTTiyTBjwX1faoyearj8KdMq0LgsBTHMrRuMek7s+CxF8yE+w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+        <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+
+
+</head>
+    <body>
+        
+        {% include 'partials/_navbar.html' %}
+        
+            {% block content %}
+
+
+            {% endblock content %}
+
+        {% include 'partials/_footer.html' %}
+
+        
+
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        
+
+        
+        {% for message in messages %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script> 
+                  alertify.set('notifier','position', 'bottom-right');
+                  alertify.error('{{message}}');
+                </script>
+            {% endif %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <script> 
+                  alertify.set('notifier','position', 'bottom-right');
+                  alertify.success('{{message}}');
+                </script>
+            {% endif %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <script> 
+                  alertify.set('notifier','position', 'bottom-right');
+                  alertify.notify('{{message}}');
+                </script>
+            {% endif %}
+                
+        {% endfor %}
+
+        
+
+    </body>
+</html>

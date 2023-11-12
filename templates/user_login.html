@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block title %} User Login {% endblock %}
+
+{% block content %}
+
+<style>
+    .user_card {
+			width: 350px;
+			margin-top: 90px;
+			margin-bottom: auto;
+			background: #ffffff;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+			
+		}
+
+		.login_btn {
+			width: 100%;
+			border-radius: 50px;
+			background: #36355d !important;
+			padding: 13px 25px;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #36355d !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+		#messages{
+			color: red;
+			padding: 10px;
+			margin-top: 10px;
+		}
+		.user_card{
+			width: 31.25rem;
+			height: 50vh;
+			color: white;
+			
+			background-color: #272643;
+
+		}
+		@media screen and (min-width:767px){
+          .navbar-brand span{
+            display: unset;
+          }
+          .navbar-brand i{
+            display: none;
+          }
+        }
+        @media screen and (max-width:991px){
+          .navbar-brand span{
+            display: none;
+          }
+          .navbar-brand i{
+            font-size: 2rem;
+          }
+		  body{
+			background-color: #272643;
+		  }
+      .container{
+        padding: 40px 10px;
+      }
+		  .navbar{
+			box-shadow: unset;
+		  }
+		  .user_card {
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+        }
+		@media screen and (max-width:500px){
+          .navbar-brand{
+            font-size: 1.2rem;
+          }
+        }
+        @media screen and (max-width:991px){
+			.navbar{
+				width: 100%;
+				margin: auto;
+				border-radius: unset;
+			}
+        }
+
+	</style>
+
+
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100 login-container">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+
+
+                <h3 class="text-white" id="form-title">Login</h3>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="username" placeholder="Username..." class="form-control">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                            <input type="password" name="password" placeholder="Password..." class="form-control" >
+                    </div>
+
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                             <input class="btn login_btn" type="submit" value="Login">
+                           </div>
+                </form>
+
+            </div>
+    
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    Don't have an account? <a href="{% url 'members:register' %}" class="ml-2 text-white">Sign Up</a>
+                </div>
+				<br>
+				<div class="d-flex justify-content-center links">
+                    <a href="{% url 'members:register' %}" class="ml-2 text-white">Forgot Username/Password?</a>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
