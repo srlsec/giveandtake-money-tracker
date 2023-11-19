@@ -411,8 +411,8 @@ flex-direction: column;
 .login-container-btn{
     width: 100%;
     transition: all ease-in-out 0.3s;
-    color: #6290c3;
     background-color: transparent;
+    color: #6290c3;
     border: 1px solid #6290c3;
 
 }
@@ -449,18 +449,10 @@ input[type="color"]:focus,
 }
 .input-group{
     border-bottom: 1px solid #1a1b41;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .input-group-text{
     border: none;
     background-color: transparent !important;
-}
-.create-a-input{
-    background-color: transparent;
-    border: none;
-    width: 90%;
 }
         </style>
         
@@ -468,34 +460,27 @@ input[type="color"]:focus,
             <form method="POST" action="" class="row vh-100 login-row">
                 {% csrf_token %}
                 <div class="col-lg-6 bg-gray p-5 text-center login-col">
-                   <img src="../static//images/logo/logo-white-removebg-preview (2).png" width="200" class="my-4">
-                   <p class="mb-3 fs-7 honeydraw">Our new initiative giveandtake is a money tracker app to save your wedding fund and other money transacation we have prepared a new website giveandtake.</p>
-                   <h1 class="text-white">Welcome Our Future</h1>
-                   <a href="{% url 'members:login' %}" class="btn fw-bold mb-2 login-btn px-4 rounded-pill">Login</a>                   <div class="img-cover p-4">
+                   <h1 class="text-white">Great to you back!</h1>
+                   <p class="text-white my-2">Welcome to giveandtake.You can now login with your email and password.</p>
+                   <a href="{% url 'members:register' %}" class="btn fw-bold mb-2 login-btn px-4 rounded-pill">Sign Up</a>                   <div class="img-cover p-4">
                         <img src="assets/images/loginbg.svg" alt="">
                    </div>
                 </div>
                 <div class="col-lg-6 p  vh-100 input-container">
                    <div class="row d-flex vh-100">
                        <div class="col-md-8 p-4 ikigui m-auto text-center align-items-center">
-                           <h4 class="text-center fw-bolder mb-4 fs-2">Create Account</h4>
+                           <h4 class="text-center fw-bolder mb-4 fs-2">Login</h4>
                            <div class="input-group mb-4">
                               <span class="input-group-text border-end-0 " id="basic-addon1"><i class="bi bi-person"></i></span>
-                              {{form.username}}
-                            </div>
-                            <div class="input-group mb-4">
-                                <span class="input-group-text border-end-0" id="basic-addon1"><i class="bi bi-lock"></i></span>
-                                {{form.email}}
-                              </div>
-                              <div class="input-group mb-4">
-                                <span class="input-group-text border-end-0" id="basic-addon1"><i class="bi bi-lock"></i></span>
-                                {{form.password1}}
-                              </div>
-                              <div class="input-group mb-4">
-                                <span class="input-group-text border-end-0" id="basic-addon1"><i class="bi bi-lock"></i></span>
-                                {{form.password2}}
-                              </div>
-                              <button type="submit" class="login-container-btn rounded-pill py-2">Create Account</button>                           
+                              <input type="text" name="username" placeholder="Username..." class="login-form form-control fs-7  form-control-lg inbg mb-0">
+                           </div>
+                           <div class="input-group mb-4">
+                              <span class="input-group-text border-end-0" id="basic-addon1"><i class="bi bi-lock"></i></span>
+                              <input  type="password" name="password" placeholder="Password..." class="login-form form-control ps-2 fs-7 form-control-lg inbg mb-0" >
+                           </div>
+                           
+
+                           <button type="submit" class="login-container-btn rounded-pill py-2">Login</button>
                            <p class="text-center py-4 fw-bold fs-8">Or Sign in with social platforms</p>
                            
                            <ul class="d-inline-block mx-auto">
@@ -508,29 +493,16 @@ input[type="color"]:focus,
                        </div>
                    </div>
                     
-                </form>
-                {{form.errors}}
-                {% if form.error %}
-    
-                <div class="alert alert-danger">
-                    <strong>{{ form.error }}</strong>
                 </div>
-    
-                {% endif %}
             </div>
         </div>
         <script>
-var form_fields = document.getElementsByTagName('input')
-form_fields[1].placeholder='Username..';
-form_fields[2].placeholder='Email..';
-form_fields[3].placeholder='Enter password...';
-form_fields[4].placeholder='Re-enter Password...';
-
-
-for (var field in form_fields){	
-form_fields[field].className += ' create-a-input'
-}
-</script>
+            function scrollDown(){
+                windows.scrollBy({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            }
         </script>
         {% for message in messages %}
 

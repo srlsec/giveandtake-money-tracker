@@ -5,170 +5,549 @@
 {% block content %}
 
 <style>
-		.login-section{
-		margin-bottom: 100px;
-	}
-	body{
-        background-color: whitesmoke;
-        font-family: 'Poppins', sans-serif;
-    }
-	.title-blue{
-		color: #272643 !important;
-	}
-    .user_card {
-			width: 350px;
-			margin-top: 90px;
-			margin-bottom: auto;
-			background: #ffffff;
-			position: relative;
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			padding: 10px;
-			/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-		}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-		.form_container {
-			margin-top: 20px;
-		}
+/* ===================================== Basic CSS ==================================== */
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
 
-		#form-title{
-			color: #fff;
-			
-		}
+img {
+  max-width: 100%;
+}
 
-		.login_btn {
-			width: 100%;
-			border-radius: 50px;
-			background: #36355d !important;
-			padding: 13px 25px;
-			color: white !important;
-		}
-		.login_btn:focus {
-			box-shadow: none !important;
-			outline: 0px !important;
-		}
-		.login_container {
-			padding: 0 2rem;
-		}
-		.input-group-text {
-			height: 40px;
-			background: #36355d !important;
-			color: white !important;
-			border: 0 !important;
-			border-radius: 0.25rem 0 0 0.25rem !important;
-		}
-		.input_user,
-		.input_pass:focus {
-			box-shadow: none !important;
-			outline: 0px !important;
-		}
+a {
+  text-decoration: none;
+  outline: none;
+  color: #444;
+}
 
-		#messages{
-			color: red;
-			padding: 10px;
-			margin-top: 10px;
-		}
-		.user_card{
-			width: 31.25rem;
-			height: 50vh;
-			color: white;
-			
-			background-color: #ffffff;
+a:hover {
+  color: #444;
+}
 
-		}
-		@media screen and (min-width:767px){
-          .navbar-brand span{
-            display: unset;
-          }
-          .navbar-brand i{
-            display: none;
-          }
-        }
-        @media screen and (max-width:991px){
-          .navbar-brand span{
-            display: none;
-          }
-          .navbar-brand i{
-            font-size: 2rem;
-          }
-		  body{
-			background-color: #272643;
-		  }
-      .container{
-        padding: 40px 10px;
-      }
-		  .navbar{
-			box-shadow: unset;
-		  }
-		  .user_card {
-			margin-top: 20px;
-			margin-bottom: 20px;
-		}
-        }
-		@media screen and (max-width:500px){
-          .navbar-brand{
-            font-size: 1.2rem;
-          }
-        }
-        @media screen and (max-width:991px){
-			.navbar{
-				width: 100%;
-				margin: auto;
-				border-radius: unset;
-			}
-        }
+ul {
+  margin-bottom: 0;
+  padding-left: 0;
+}
 
-	</style>
+a:hover,
+a:focus,
+input,
+textarea {
+  text-decoration: none;
+  outline: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Poppins";
+}
+
+p {
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.hid {
+  display: none;
+}
+
+.top-mar {
+  margin-top: 15px;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+::placeholder {
+  color: #747f8a !important;
+  font-size: 13px;
+  opacity: 0.5 !important;
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #545454;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: #6A6A6A;
+  font-family: "Poppins",sans-serif;
+  overflow-x: hidden;
+}
+
+.section-title {
+  padding: 30px;
+  margin: 0px;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 767px) {
+  .section-title {
+    padding: 5px;
+  }
+}
+.section-title h2 {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.section-title p {
+  max-width: 850px;
+  text-align: center;
+  float: none;
+  margin: auto;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+.section-title span {
+  float: right;
+  font-style: italic;
+}
+
+.inner-title {
+  padding: 20px;
+  padding-left: 0px;
+  margin: 0px;
+  margin-bottom: 10px;
+  padding-bottom: 0px;
+  border-bottom: 1px solid #ccccccc4;
+  display: block;
+  padding-right: 0px;
+}
+.inner-title h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid #863dd9;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  width: 300px;
+}
+.inner-title p {
+  width: 100%;
+  text-align: center;
+}
+.inner-title .btn {
+  float: right;
+  margin-top: -38px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.page-nav {
+  background-size: 100%;
+  padding: 68px;
+  text-align: center;
+  background-color: #eaeaea;
+}
+.page-nav ul {
+  float: none;
+  margin: auto;
+}
+@media screen and (max-width: 992px) {
+  .page-nav {
+    background-size: auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .page-nav {
+    padding-top: 200px;
+    padding-bottom: 40px;
+  }
+}
+@media screen and (max-width: 356px) {
+  .page-nav {
+    padding-top: 200px;
+    padding-bottom: 40px;
+  }
+}
+.page-nav h2 {
+  font-size: 28px;
+  width: 100%;
+  font-weight: 700;
+  color: #444;
+}
+@media screen and (max-width: 600px) {
+  .page-nav h2 {
+    font-size: 26px;
+  }
+}
+.page-nav ul li {
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: #444;
+}
+.page-nav ul li i {
+  width: 30px;
+  text-align: center;
+  color: #444;
+}
+.page-nav ul li a {
+  color: #444;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.btn-success {
+  background-color: #51be78;
+  border-color: #51be78;
+}
+.btn-success:hover {
+  background-color: #51be78 !important;
+  border-color: #51be78 !important;
+}
+.btn-success:active {
+  background-color: #51be78 !important;
+  border-color: #51be78 !important;
+}
+.btn-success:focus {
+  background-color: #51be78 !important;
+  border-color: #51be78 !important;
+  box-shadow: none !important;
+}
+
+.btn-primary {
+  background-color: #8119f5;
+  border-color: #8119f5;
+}
+.btn-primary:hover {
+  background-color: #8119f5 !important;
+  border-color: #8119f5 !important;
+}
+.btn-primary:active {
+  background-color: #8119f5 !important;
+  border-color: #8119f5 !important;
+}
+.btn-primary:focus {
+  background-color: #8119f5 !important;
+  border-color: #8119f5 !important;
+  box-shadow: none !important;
+}
+
+.btn-outline-primary {
+  border-color: #8119f5;
+  color: #8119f5;
+}
+.btn-outline-primary:hover {
+  background-color: #8119f5 !important;
+  border-color: #8119f5 !important;
+}
+.btn-outline-primary:active {
+  background-color: #8119f5 !important;
+  border-color: #8119f5 !important;
+}
+.btn-outline-primary:focus {
+  background-color: #8119f5 !important;
+  border-color: #8119f5 !important;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border: 1px solid #CCC;
+}
+
+.btn-light {
+  background-color: #FFF;
+  color: #3F3F3F;
+}
+
+.collapse.show {
+  display: block !important;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #CCC;
+}
+
+.form-control {
+  background-color: #F8F8F8;
+  margin-bottom: 20px;
+}
+.form-control:focus {
+  background-color: #FFF;
+  border-color: #CCC;
+}
+
+.container {
+  max-width: 1170px;
+}
+@media screen and (max-width: 575px) {
+  .container {
+    padding: 10px 15px;
+  }
+}
+
+/* ===================================== Basic CSS ==================================== */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.fw-md {
+  font-weight: 600;
+}
+
+.fw-sm {
+  font-weight: 500;
+}
+
+.big-padding {
+  padding: 50px;
+}
+@media screen and (max-width: 940px) {
+  .big-padding {
+    padding: 30px 10px;
+  }
+}
+
+.bggray {
+  background-color: red !important;
+}
+
+.shadow-md {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xs {
+  box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.13);
+}
+
+.truncate-2 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 42px;
+  overflow: hidden;
+  line-height: 21px;
+}
+
+.truncate-4 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  height: 82px;
+  overflow: hidden;
+  line-height: 21px;
+}
+
+.truncate-6 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  height: 130px;
+  overflow: hidden;
+  line-height: 21px;
+}
+
+.rtable {
+  max-width: 500px;
+  float: none;
+  margin: auto;
+}
+.rtable tr td {
+  padding: 5px;
+}
+
+.fs-7 {
+  font-size: 0.95rem;
+}
+
+.fs-8 {
+  font-size: 0.9rem;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.bg-gray {
+  background: rgba(217, 217, 217, 0.25);
+}
+
+.btn-xs {
+  padding: 2px 8px;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+}
+.btn-xs i {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 767px) {
+  .bordernosm {
+    border: 0px !important;
+  }
+}
+
+.h400 {
+  height: 400px;
+  overflow: auto;
+}
+
+.sticky-top-90 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 85px;
+  z-index: 1020;
+}
+
+.fs-9 {
+  font-size: 0.79rem;
+}
+
+.fs-55 {
+  font-size: 1.1rem;
+}
+
+.mt-25 {
+  margin-top: 11px;
+}
+
+.width-fit {
+  width: fit-content;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.inbg {
+  background-color: #eeeeee;
+}
+.ikigui{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.register-section{
+    background-color: #1a1b41;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login-container{
+margin: 0 auto;
+}
+.honeydraw{
+    color: #f1ffe7;
+}
+.login-btn{
+    background-color: #6290c3;
+    color: #f1ffe7;
+    width: 100%;
+    transition: all ease-in-out 0.3s;
+}
+.login-btn:hover{
+    background-color: transparent;
+    border: 1px solid #6290c3;
+    color: #6290c3;
+}
+form .login-btn{
+    margin: 10px 0;
+    padding: 10px 0;
+}
+</style>
 
 
-<div class="container h-100 login-section">
-    <div class="d-flex justify-content-center h-100 login-container">
-        <div class="user_card border border-radius">
-            <div class="d-flex justify-content-center">
 
 
-                <h3 class="title-blue" id="form-title">Login</h3>
-            </div>
-            <div class="d-flex justify-content-center form_container">
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    <div class="input-group mb-3">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" name="username" placeholder="Username..." class="form-control">
+
+
+
+<div class="container-fluid login-container">
+    <div class="row vh-100">
+        <div class="col-lg-6 register-section p-5 text-center">
+            <img src="../static/images//logo/logo-white-removebg-preview (2).png" width="200">
+           <a href="{% url 'members:register' %}">
+               <button class="btn fw-bold mb-5 login-btn px-4 rounded-pill">Sign Up</button>
+           </a>
+           <div class="img-cover p-4">
+                <img src="assets/images/loginbg.svg" alt="">
+           </div>
+        </div>
+        <div class="col-lg-6 p">
+           <div class="row d-flex">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="col-md-8 p-4 vh-100 ikigui m-auto text-center align-items-center">
+                    <h4 class="text-center fw-bolder mb-4 fs-2">Login</h4>
+                    <div class="input-group mb-4">
+                       <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-person"></i></span>
+                       <input type="text" class="form-control ps-2 border-start-0 fs-7 inbg form-control-lg mb-0"name="username" placeholder="Username...">
                     </div>
-                    <div class="input-group mb-2">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                            <input type="password" name="password" placeholder="Password..." class="form-control" >
+                    <div class="input-group mb-4">
+                       <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-lock"></i></span>
+                       <input class="form-control ps-2 fs-7 border-start-0 form-control-lg inbg mb-0"type="password" name="password" placeholder="Password...">
                     </div>
-
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                             <input class="btn login_btn" type="submit" value="Login">
-                           </div>
-                </form>
-
-            </div>
-    
-            <div class="mt-4">
-                <div class="d-flex justify-content-center links text-secondary">
-                    Don't have an account? <a href="{% url 'members:register' %}" class="ml-2 text-secondary">Sign Up</a>
-                </div>
-				<br>
-				<div class="d-flex justify-content-center links">
+                    
+                    <input class="btn login-btn rounded-pill" type="submit" value="Login"/>
                     <a href="{% url 'members:register' %}" class="ml-2 text-secondary">Forgot Username/Password?</a>
+                    
+                    <p class="text-center py-4 fw-bold fs-8">Or Sign in with social platforms</p>
+                    
+                    <ul class="d-inline-block mx-auto">
+                        <li class="float-start px-3"><a href=""><i class="bi bi-facebook"></i></a></li>
+                        <li class="float-start px-3"><a href=""><i class="bi bi-twitter"></i></a></li>
+                        <li class="float-start px-3"><a href=""><i class="bi bi-linkedin"></i></a></li>
+                        <li class="float-start px-3"><a href=""><i class="bi bi-google"></i></a></li>
+                        
+                    </ul>
                 </div>
-        
-            </div>
+            </form>
+           </div>
+            
         </div>
     </div>
-</div>
+</div>  
+</div>  
+
 
 
 
 {% endblock %}
+

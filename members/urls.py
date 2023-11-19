@@ -7,7 +7,6 @@ app_name = "customer"
 urlpatterns = [
     path('', views.dashboard, name="dashboard"),
     
-    path('update_task/<str:pk>/', views.updateTask, name="update_task"),
     path('delete_task/<str:pk>/', views.deleteTask, name="delete_task"),
 
     path('login/', views.user_login, name="login"),
@@ -16,5 +15,9 @@ urlpatterns = [
 
     path('about-us/', views.aboutDeveloper, name="about_us"),
     path('user-profile/', views.user_profile, name="user_profile"),
+
+    path('test/', views.test, name="test"),
+    path('update_form/<str:pk>/', views.editTask, name='update_form'),
+    path('add', views.addTask, name='add_form'),
 
 ]

@@ -3,360 +3,254 @@
 {% block title %}Home {% endblock %}
 
 {% block content %}
-
-
 <style>
-      .border{
-        border: 1px solid #b7bbbe !important;
-    }
-    .border-radius{
-        border-radius: 10px !important;
-    }
   body{
         background-color: whitesmoke;
         font-family: 'Poppins', sans-serif;
     }
-    .create-contact {
-        background-color: #272643;
-        color: white !important;
-        padding: 15px 20px;
-        transition: all ease-in-out 0.3s;
-      }
+  .table-container{
+    border-radius: 6px;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border: 1px solid rgba(0,0,0,.125);
+  }
+  .details-box{
+    background-color: #1a1b41;
+  }
+  .honeydraw{
+    color: #f1ffe7;
+  }
+  .bluelake{
+    color: #6290c3;
+  }
+  .btn-1{
+    width: 100%;
+    transition: all ease-in-out 0.3s;
+    color: #fff;
+    background-color: #1a1b41;
+    border: 1px solid white;
 
-      .create-contact:hover {
-        background-color: #323050;
-        color: #fff;
-        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
-      }
-
-      .input-group span {
-        width: 38px;
-        height: 38px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        background-color: #272643;
-        border: none;
-        justify-content: center;
-      }
-      .input-group span i {
-        color: white;
-        font-size: 14px;
-      }
-
-      .input-group {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-
-      .view-text {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .view,
-      .create-new-sec {
-        border-radius: 10px;
-        height: 70vh !important;
-        overflow-x: hidden;
-      }
-
-      .input-group {
-        margin: 10px 0;
-      }
-
-      .form-control {
-        padding: 15px;
-        border-radius: 50px;
-      }
-
-      .btn-search {
-        height: 54px;
-        width: 100px;
-        color: white;
-        background-color: #272643;
-        border: 1px solid rgb(205, 205, 205);
-        border-radius: 50px;
-        transition: all ease-in-out 0.4s;
-      }
-      .btn-search:hover {
-        background-color: #323050;
-        color: #fff;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      }
-      .logout-btn {
-        background-color: white;
-        border: 1px solid rgb(205, 205, 205);
-        padding: 10px 50px;
-        border-radius: 50px;
-        transition: all ease-in-out 0.4s;
-      }
-
-      .logout-btn:hover {
-        background-color: #272643;
-        color: white;
-      }
-
-      input {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-      }
-
-      input::placeholder {
-        color: #d3d3d3;
-      }
-
-      .submit {
-        background-color: #6ba3e8;
-      }
-
-      .center-column {
-        width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 3px;
-        /* box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75); */
-      }
-
-      .item-row {
-        background-color: #906abd;
-        margin: 10px;
-        padding: 20px;
-        border-radius: 3px;
-        color: #fff;
-        font-size: 16px;
-        box-shadow: 0px -1px 10px -4px rgba(0, 0, 0, 0.75);
-      }
-      .money-tracker {
-        font-weight: 400;
-      }
-
-      @font-face {
-    font-family: "ButterScotch";
-    src: url(../static//fonts/Butterscotch.ttf);
-}
-    .title{
-        margin: 35px 0;
-        font-family: "ButterScotch",sans-serif;
-    }
-    .img-thumbnail {
-    border-radius: 50%;
-    margin: 20px 0;
 }
 
 
-      @media screen and (max-width: 767px) {
-        body{
-          overflow-x: hidden !important;
-        }
-        .home-main .row{
-          flex-direction: column !important;
-          display: flex;
-        }
-      }
-      @media screen and (max-width: 991px) {
-      
-        .container {
-          padding: 40px 10px;
-          margin: 0 auto !important;
-        }
-      }
+.btn-1:hover{
+    color: #1a1b41;
+    background-color: transparent;
+    border: 1px solid #1a1b41;
+}
+input{
+  width: 100%;
+  padding: 7px 0;
+}
 
-      .btn-sm {
-        background-color: #272643 !important;
-        color: white !important;
-      }
 
-      .list-group-item {
-        padding: 10px 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .delete-sec-btn:nth-child(2) {
-        background-color: #212038;
+.page-item.active .page-link {
         color: #fff !important;
-      }
-      .delete-sec-btn:nth-child(3) {
-        color: white !important;
-        background-color: transparent;
-        border: 1px solid #212038;
-      }
-      .badge {
-        background-color: #212038;
-        color: white;
-      }
-      .card-header {
-        background-color: white;
-        padding: 20px;
-        border: none;
-      }
-      .container {
-        margin-bottom: 40px;
-      }
-      .bi-list {
-        font-size: 28px;
-      }
+        background-color: #1a1b41 !important;
+        border-color: #1a1b41 !important; 
+    }
 
-      .menu-icon::after {
-        content: "\2630"; /* Unicode character for the menu icon */
-      }
+    .page-link {
+        color: #1a1b41 !important;
+        background-color: #fff !important;
+        border: 1px solid #dee2e6 !important; 
+    }
 
-      .menu-icon.closed::after {
-        content: "\2715"; /* Unicode character for the close icon */
-      }
-
+    .page-link:hover {
+        color: #fff !important;
+        background-color: #1a1b41 !important;
+        border-color: #1a1b41 !important; 
+    }
 </style>
 
-<div>
-  <h1 class=" text-center title">Hi, {{request.user}}</h1>
-</div>
+<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+
+<script src='https://code.jquery.com/jquery-3.7.0.js'></script>
+   <script src='https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js'></script>
+   <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js" charset="utf-8"></script>
+
+
+
+   
+
+
+   
+
+
+     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"> -->
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
 
 <div class="container home-main">
+  <div class="row">
+
+    <!-- Total -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary details-box">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
+                            Total Contacts</div>
+                        <div class="h5 mb-0 font-weight-bold honeydraw">{{total_count}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-person-fill fa-2x text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Completed -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success details-box">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
+                            Amount received</div>
+                        <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_amount.amount__sum }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Not Started -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info details-box">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
+                            AMOUNT PAID</div>
+                            <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_paid.amount__sum }}</div>
+                            <!-- <button hx-get="{% url 'members:add_form' %}" hx-target="#dialog" class="btn btn-primary">
+                              Add
+                            </button> -->
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning details-box">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
+                            AMOUNT PENDING</div>
+                        <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_pending.amount__sum }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="bi bi-clock fa-2x text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  
+<div class="row table-container" style="background-color: #ffffff;">
+  <div class="row border-primary">
+    <form method="POST" action="/">
+      {% csrf_token %}
     <div class="row">
       <div class="col">
-        <div class="card text-dark mb-3 create-new-sec border border-radius">
-          <h5 class="card-header">Create new contact</h5>
-          <div class="card-body">
-            <div
-              class="accordion-collapse collapse show"
-              id="collapse-create"
-            >
-              <div class="accordion-body">
-                <form method="POST" action="/">
-                  {% csrf_token %}
-                  <div class="input-group mb-3">
-                    <div class="input-group-append">
-                      <span class="input-group-text"
-                        ><i class="fas fa-user"></i
-                      ></span>
-                    </div>
-                    {{form.name}}
-                  </div>
-                  <div class="input-group mb-2">
-                    <div class="input-group-append">
-                      <span class="input-group-text"
-                        ><i class="bi bi-geo-alt-fill"></i
-                      ></span>
-                    </div>
-                    {{form.address}}
-                  </div>
-                  <div class="input-group mb-2">
-                    <div class="input-group-append">
-                      <span class="input-group-text"
-                        ><i class="bi bi-currency-rupee"></i
-                      ></span>
-                    </div>
-                    {{form.amount}}
-                  </div>
-<!-- 
-                  <select name="function_type">
-                    {% for id, choice in form.FunctionType %}
-                        <option value="{{ id }}"{% if form.function_type == id %} selected="selected"{% endif %}>{{ choice }}</option>
-                    {% endfor %}
-                </select> -->
-
-                  <select name="food_status" class="form-select" aria-label="Default select example">
-                    <option value="1" selected>Kalyanam</option>
-                    <option value="2">Payat</option>
-
-                    <!-- <option value="1" {% if sort == 'name' %}selected{% endif %}>name</option>
-                    <option value="age" {% if sort == 'age' %}selected{% endif %}>age</option> -->
-
-                  </select>
-
-                  <!-- <label class="col-12 col-sm-2">Rating</label>
-<input type="radio" class="form-control radio-inline col-sm-1 mt-1" name="radoption" value=" 1">1
-<input type="radio" class="form-control radio-inline col-sm-1 mt-1" name="radoption" value=" 2" checked>2 -->
-
-                  <div
-                    class="d-flex justify-content-center mt-3 login_container"
-                  >
-                    <input
-                      class="btn login_btn create-contact"
-                      type="submit"
-                      value="Create"
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- {{form.name}} -->
+        <input name="name" type="text" class="form-control" placeholder="Name" required>
       </div>
       <div class="col">
-        <div class="card view text-dark mb-3 border border-radius">
-          <h5 class="card-header view-text">View contacts <span class="badge">{{total_count}}</span></span
-            ></h5>
-          <div class="card-body">
-            <form action="{% url 'members:dashboard' %}" method="get">
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  id="search"
-                  class="form-control"
-                  name="search_query"
-                />
-
-                <button type="submit" class="btn-search" value="Search">
-                  Search
-                </button>
-              </div>
-            </form>
-
-            <div class="contact-details">
-              <ul class="list-group">
-                {% for task in tasks %}
-                <li class="list-group-item">
-                  {% if task.complete == True %}
-                  <strike>{{task.name}} - {{task.amount}}</strike>
-                  {% else %}
-                  <span
-                    >{{task.name}} -
-                    <span class="badge">₹ {{task.amount}}</span></span
-                  >
-                  {% endif %}
-                  <div class="contact-user-button">
-                    <a
-                      class="btn btn-sm"
-                      href="{% url 'members:update_task' task.id %}"
-                      ><i class="bi bi-pencil-square"></i
-                    ></a>
-                    <a
-                      class="btn btn-sm"
-                      href="{% url 'members:update_task' task.id %}"
-                      ><i class="bi bi-eye"></i
-                    ></a>
-
-                    <button
-                      class="btn btn-sm"
-                      id="btn_delete"
-                      type="button"
-                      data-bs-url="{% url 'members:delete_task' task.id %}"
-                      class="btn p-0"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modal-delete"
-                      data-bs-foodid="{{ task.id }}"
-                      data-bs-foodname="{{ task }}"
-                    >
-                      <i class="bi bi-trash3"></i>
-                    </button>
-                  </div>
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </div>
+        <!-- {{form.address}} -->
+        <input name="address" type="text" class="form-control" placeholder="Address" required>
+      </div>
+      <div class="col">
+        <!-- {{form.amount}} -->
+        <input name="amount" type="text" class="form-control" placeholder="Amount" required>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn-1 py-2" value="Create contact">Create</button>
+        <!-- <input class="btn login_btn create-contact" type="submit" value="Create contact"> -->
       </div>
     </div>
+  </form>
+</div>
+<hr class="mt-3">
+
+  <table id="example" class="table  table-bordered " cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Date Created</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody >
+        {% for task in tasks %}
+        <tr>
+          <td>{{task.name}}</td>
+          <td>{{task.address}}</td>
+          <td>{{task.amount}}</td>
+          <td>{{task.created}}</td>
+          <td>
+            <div class="contact-user-button">
+              <a
+                class="btn btn-sm"
+                hx-get="{% url 'members:update_form' task.id %}" hx-target="#dialog"
+                ><i class="bi bi-pencil-square"></i
+              ></a>
+          
+
+              <button
+                class="btn btn-sm"
+                id="btn_delete"
+                type="button"
+                data-bs-url="{% url 'members:delete_task' task.id %}"
+                class="btn p-0"
+                data-bs-toggle="modal"
+                data-bs-target="#modal-delete"
+                data-bs-foodid="{{ task.id }}"
+                data-bs-foodname="{{ task }}"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+            </div>
+          </td>
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+
+  </table>
+</div>
+
+
+
+  <script>
+      $(document).ready(function() {
+  $('#example').dataTable();
+} );
+
+  </script>
+
+
 </div>
 
 <!-- Delete Modal -->
@@ -392,17 +286,64 @@
     </div>
 </div>
 
-<script>
-    //Query All input fields
-    var form_fields = document.getElementsByTagName("input");
-    form_fields[3].placeholder = "Name";
-    form_fields[4].placeholder = "Address";
-    form_fields[5].placeholder = "Amount";
 
-    for (var field in form_fields) {
-      form_fields[field].className += " form-control form-btn";
-    }
+<!-- Placeholder for the modal -->
+<div id="modal" class="modal fade">
+  <div id="dialog" class="modal-dialog" hx-target="this"></div>
+</div>
+
+<!-- Empty toast to show the message -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+  <div id="toast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive"
+    aria-atomic="true">
+    <div class="d-flex">
+      <div id="toast-body" class="toast-body"></div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit form new modal -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"></script>
+
+<script>
+  ; (function () {
+    const modal = new bootstrap.Modal(document.getElementById("modal"))
+
+    htmx.on("htmx:afterSwap", (e) => {
+      // Response targeting #dialog => show the modal
+      if (e.detail.target.id == "dialog") {
+        modal.show()
+      }
+    })
+
+    htmx.on("htmx:beforeSwap", (e) => {
+      // Empty response targeting #dialog => hide the modal
+      if (e.detail.target.id == "dialog" && !e.detail.xhr.response) {
+        modal.hide()
+        e.detail.shouldSwap = false
+
+        location.reload();
+      }
+    })
+
+    // Remove dialog content after hiding
+    htmx.on("hidden.bs.modal", () => {
+      document.getElementById("dialog").innerHTML = ""
+    })
+  })()
 </script>
+  
+<script>
+  $(document).ready(function () {
+  $('#dtBasicExample').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
+</script>
+
 
 <!-- Delete contact Popup -->
 <script>
@@ -420,6 +361,12 @@
     deleteForm.setAttribute("action", url);
     deleteForm.setAttribute("method", "post");
   });
+</script>
+
+<script>
+  $(document).ready(function() {
+     $('#myTable').DataTable();
+   });
 </script>
 
 {% endblock %}
