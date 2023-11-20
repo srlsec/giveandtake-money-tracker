@@ -63,25 +63,12 @@ input{
     }
 </style>
 
-<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-
 <script src='https://code.jquery.com/jquery-3.7.0.js'></script>
-   <script src='https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js'></script>
-   <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js" charset="utf-8"></script>
-
-
-
-   
-
-
-   
-
-
-     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"> -->
-     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<script src='https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js'></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
 
 <div class="container home-main">
@@ -111,9 +98,14 @@ input{
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
-                            Amount received</div>
-                        <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_amount.amount__sum }}</div>
+                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">Amount received</div>
+
+                          {% if total_amount.amount__sum == None %}
+                          <div class="h5 mb-0 font-weight-bold honeydraw">0</div>
+                          {% else %}
+                            <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_amount.amount__sum }}</div>
+                          {% endif %}
+
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-white"></i>
@@ -131,7 +123,13 @@ input{
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
                             AMOUNT PAID</div>
-                            <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_paid.amount__sum }}</div>
+                            
+                            {% if total_paid.amount__sum == None %}
+                            <div class="h5 mb-0 font-weight-bold honeydraw">0</div>
+                            {% else %}
+                              <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_paid.amount__sum }}</div>
+                            {% endif %}
+
                             <!-- <button hx-get="{% url 'members:add_form' %}" hx-target="#dialog" class="btn btn-primary">
                               Add
                             </button> -->
@@ -152,7 +150,13 @@ input{
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
                             AMOUNT PENDING</div>
-                        <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_pending.amount__sum }}</div>
+                        
+                          {% if total_pending.amount__sum == None %}
+                            <div class="h5 mb-0 font-weight-bold honeydraw">0</div>
+                          {% else %}
+                            <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_pending.amount__sum }}</div>
+                          {% endif %}
+                        
                     </div>
                     <div class="col-auto">
                         <i class="bi bi-clock fa-2x text-white"></i>
@@ -198,6 +202,7 @@ input{
           <th scope="col">Address</th>
           <th scope="col">Amount</th>
           <th scope="col">Date Created</th>
+          <th scope="col">Status</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -208,7 +213,13 @@ input{
           <td>{{task.name}}</td>
           <td>{{task.address}}</td>
           <td>{{task.amount}}</td>
-          <td>{{task.created}}</td>
+          <td>{{task.created|date:'Y-m-d'}}</td>
+          {% if task.complete == True %}
+            <td><button type="button" class="btn btn-success btn-sm">Completed</button></td>
+          {% endif %}
+          {% if task.complete == False %}
+            <td><button type="button" class="btn btn-warning btn-sm">Pending</button></td>
+          {% endif %}
           <td>
             <div class="contact-user-button">
               <a

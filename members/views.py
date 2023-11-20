@@ -15,7 +15,6 @@ import json
 def test(request):
     return render(request, 'test.html')
 
-# Create your views here.
 @login_required(login_url='members:login')
 def dashboard(request):
     if request.user.is_authenticated:
@@ -140,7 +139,7 @@ def user_login(request):
             else:
                 messages.error(request, 'Username or Password is incorrect')
 
-        return render(request, 'user_login_tmp.html')
+        return render(request, 'user_login.html')
 
 def user_logout(request):
   if request.method == 'POST':

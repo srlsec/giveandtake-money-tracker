@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 
 
 <form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
@@ -12,29 +13,25 @@
         <div class="modal-body">
             <div class="mb-3">
               <label for="{{ form.title.id_for_label }}" class="form-label">Name</label>
-              {{update_form.name}}
-              <!-- <input value="{{update_form.name}}" name="name" type="text" class="form-control" placeholder="First name"> -->
-              <!-- <div class="invalid-feedback">{{ form.title.errors|first }}</div> -->
+              <!-- {{update_form.name}} -->
+              {% render_field update_form.name class="form-control form-control-sm" type="text" %}
             </div>
       
             <div class="mb-3">
               <label for="{{ form.author.id_for_label }}" class="form-label">Address</label>
-              {{update_form.address}}
-              <!-- <input name="address" type="text" class="form-control" placeholder="First name"> -->
-              <!-- <div class="invalid-feedback">{{ form.author.errors|first }}</div> -->
+              <!-- {{update_form.address}} -->
+              {% render_field update_form.address class="form-control form-control-sm" type="text" %}
+
             </div>
       
             <div class="mb-3">
               <label for="{{ form.description.id_for_label }}" class="form-label">Amount</label>
-              {{update_form.amount}}
-              <!-- <input name="amount" type="text" class="form-control" placeholder="First name"> -->
-              <!-- <div class="invalid-feedback">{{ form.description.errors|first }}</div> -->
+              {% render_field update_form.amount class="form-control form-control-sm" type="text" %}
             </div>
-            
-            <div class="mb-3">
-              <label for="{{ form.year.id_for_label }}" class="form-label">Status</label>
-              Complete{{update_form.complete}}
-              <!-- <div class="invalid-feedback">{{ form.year.errors|first }}</div> -->
+
+            <div class="form-check form-check-inline">
+              {% render_field update_form.complete class="form-check-input" type="checkbox" id="inlineCheckbox1" %}
+              <label class="form-check-label" for="inlineCheckbox1">Completed</label>
             </div>
             
           </div>
