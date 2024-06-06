@@ -6,7 +6,7 @@ class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=200, null=True)
-    amount = models.IntegerField(default=0)
+    amount = models.CharField(max_length=200)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     

@@ -1,0 +1,434 @@
+{% extends 'base.html' %}
+
+{% block title %}Home {% endblock %}
+
+{% block content %}
+
+
+<style>
+  :root{
+    --border: rgb(209, 209, 209);
+    --primary:#2d3cc7;
+    --black:#262932;
+    --shadow:rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+  body{
+        font-family: 'Poppins', sans-serif;
+    }
+    .create-contact {
+        background-color: #3245e9 !important;
+        color: white !important;
+        padding: 15px 20px;
+        transition: all ease-in-out 0.3s;
+        border-radius: 50px !important;
+      }
+    .create-contact:hover{
+      color: white !important;
+      background-color: var(--primary) !important;
+    }
+    .input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -1px;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+      .input-group span {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        background-color: #272643;
+        border: none;
+        justify-content: center;
+      }
+      .input-group span i {
+        color: white;
+        font-size: 14px;
+      }
+
+      .input-group {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        margin-bottom: 20px;
+        align-items: center;
+      }
+      .view-text {
+        width: 95%;
+        margin-left: 10px;
+        display: flex;
+        margin-right: 20px;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--primary) !important;
+      }
+      
+      .view,
+      .create-new-sec {
+        height: 70vh !important;
+      }
+
+      .form-control {
+        padding: 15px;
+        width: 100% !important;
+        border-radius: 10px;
+        outline: none !important;
+        border:  1px solid #aeb6ff !important;
+      }
+
+      .btn-search {
+        height: 54px;
+        width: 100px;
+        color: white;
+        outline: none;
+        border: none;
+        background-color: var(--primary);
+        border-radius: 0 10px 10px 0;
+        transition: all ease-in-out 0.4s;
+      }
+      .btn-search:hover {
+        background-color: #3245e9;
+      }
+      .logout-btn {
+        background-color: white !important;
+        padding: 10px 50px;
+        border-radius: 50px;
+        color: var(--primary) !important;
+        transition: all ease-in-out 0.4s;
+      }
+
+      input::placeholder {
+        color: #d3d3d3;
+      }
+
+      .center-column {
+        width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        /* box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75); */
+      }
+
+      .item-row {
+        background-color: #906abd;
+        margin: 10px;
+        padding: 20px;
+        color: #fff;
+        font-size: 16px;
+        box-shadow: 0px -1px 10px -4px rgba(0, 0, 0, 0.75);
+      }
+      .money-tracker {
+        font-weight: 400;
+      }
+    .title{
+        margin: 35px 0;
+    }
+
+
+      @media screen and (max-width: 767px) {
+        body{
+          overflow-x: hidden !important;
+        }
+        .home-main .row{
+          flex-direction: column !important;
+          display: flex;
+        }
+      }
+      @media screen and (max-width: 991px) {
+      
+        .container {
+          padding: 40px 10px;
+          margin: 0 auto !important;
+        }
+      }
+
+      .btn-sm {
+        background-color: #272643 !important;
+        color: white !important;
+      }
+
+      .list-group-item {
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .delete-sec-btn:nth-child(2) {
+        background-color: #212038;
+        color: #fff !important;
+      }
+      .delete-sec-btn:nth-child(3) {
+        color: white !important;
+        background-color: transparent;
+      }
+      .badge {
+        background-color: #d7dbff;
+        color: var(--primary);
+      }
+      .card-header {
+        background-color: white !important;
+        color: var(--primary);
+        margin-left: 20px;
+        border: none;
+      }
+      .home-main{
+        padding-top: 140px !important;
+      }
+      .bi-list {
+        font-size: 28px;
+      }
+
+      .menu-icon::after {
+        content: "\2630";
+      }
+
+      .menu-icon.closed::after {
+        content: "\2715";
+      }
+      .border-none{
+        border: none !important;
+      }
+      .accordion-body form{
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+      }
+      .home-main label{
+        margin-bottom: 5px;
+        text-align: left;
+        display: flex;
+        width: 100%;
+      }
+      .create-contact-input{
+        display: flex !important;
+      }
+      .search-input{
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .search-header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .search-header button{
+        margin-top: 30px;
+      }
+      .form-control:focus,.form-control:active {
+   outline: none !important;
+   box-shadow: none !important;
+   background-color: #f7f8ff !important;
+
+}
+.home-main .dropdown button{
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid var(--primary) !important;
+  color: var(--primary);
+  padding: 10px 0;
+  outline: none !important;
+  width: 100%;
+}
+.home-main .dropdown-menu{
+  width: 100%;
+}
+</style>
+
+
+<div class="container home-main">
+    <div class="row">
+      <div class="col">
+        <div class="card text-dark create-new-sec border-none">
+          <h5 class="card-header">Create new contact</h5>
+          <div class="card-body">
+            <div
+              class="accordion-collapse collapse show"
+              id="collapse-create"
+            >
+              <div class="accordion-body">
+                <form method="POST" action="/">
+                  {% csrf_token %}
+                  <div class="input-group">
+                    <label>Name</label>
+                    {{form.name}}
+                  </div>
+                  <div class="input-group ">
+                    <label>Address</label>
+                    {{form.address}}
+                  </div>
+                  <div class="input-group ">
+                    <label>Amount</label>
+                    {{form.amount}}
+                  </div>
+<!-- 
+                  <select name="function_type">
+                    {% for id, choice in form.FunctionType %}
+                        <option value="{{ id }}"{% if form.function_type == id %} selected="selected"{% endif %}>{{ choice }}</option>
+                    {% endfor %}
+                </select> -->
+                <select name="food_status" class="form-select" aria-label="Default select example">
+                  <option value="1" selected>Kalyanam</option>
+                  <option value="2">Payat</option>
+
+                  <!-- <option value="1" {% if sort == 'name' %}selected{% endif %}>name</option>
+                  <option value="age" {% if sort == 'age' %}selected{% endif %}>age</option> -->
+
+                </select>
+                
+
+
+                  <!-- <label class="col-12 col-sm-2">Rating</label>
+<input type="radio" class="form-control radio-inline col-sm-1 mt-1" name="radoption" value=" 1">1
+<input type="radio" class="form-control radio-inline col-sm-1 mt-1" name="radoption" value=" 2" checked>2 -->
+
+                  <div
+                    class="d-flex justify-content-center mt-3 login_container"
+                  >
+                    <input
+                      class="btn login_btn create-contact"
+                      type="submit"
+                      value="Create"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card view text-dark mb-3 border-none">
+          <h5 class="view-text">View contacts <span class="badge">{{total_count}}</span></h5>
+            <br>
+          <div class="card-body">
+            <form action="{% url 'members:wedding' %}" method="get">
+              <div class=" mb-3 d-flex search-header">
+                <div class="search-input">
+                  <label>Search</label>
+                  <input
+                  type="text"
+                  id="search"
+                  class="form-control"
+                  name="search_query"
+                />
+                </div>
+
+                <button type="submit" class="btn-search" value="Search">
+                  Search
+                </button>
+              </div>
+            </form>
+
+            <div class="contact-details">
+              <ul class="list-group">
+                {% for task in tasks %}
+                <li class="list-group-item">
+                  {% if task.complete == True %}
+                  <strike>{{task.name}} - {{task.amount}}</strike>
+                  {% else %}
+                  <span
+                    >{{task.name}} -
+                    <span class="badge">₹ {{task.amount}}</span></span
+                  >
+                  {% endif %}
+                  <div class="contact-user-button">
+                    <a
+                      class="btn btn-sm"
+                      href="{% url 'members:update_task' task.id %}"
+                      ><i class="bi bi-pencil-square"></i
+                    ></a>
+                    <a
+                      class="btn btn-sm"
+                      href="{% url 'members:update_task' task.id %}"
+                      ><i class="bi bi-eye"></i
+                    ></a>
+
+                    <button
+                      class="btn btn-sm"
+                      id="btn_delete"
+                      type="button"
+                      data-bs-url="{% url 'members:delete_task' task.id %}"
+                      class="btn p-0"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modal-delete"
+                      data-bs-foodid="{{ task.id }}"
+                      data-bs-foodname="{{ task }}"
+                    >
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div id="modal-delete" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete contact</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn delete-sec-btn"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <form>
+            {% csrf_token %}
+            <button id="food-delete" class="btn delete-sec-btn" type="submit">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    //Query All input fields
+    var form_fields = document.getElementsByTagName("input");
+
+    for (var field in form_fields) {
+      form_fields[field].className += " form-control form-btn";
+    }
+</script>
+
+<!-- Delete contact Popup -->
+<script>
+  const deleteModal = document.getElementById("modal-delete");
+
+  deleteModal.addEventListener("show.bs.modal", (event) => {
+    const button = event.relatedTarget;
+    const foodName = button.getAttribute("data-bs-foodname");
+    const url = button.getAttribute("data-bs-url");
+    const modalBodyInput = deleteModal.querySelector(".modal-body ");
+
+    modalBodyInput.textContent = `Confirm deletion of ${foodName}`;
+
+    const deleteForm = deleteModal.querySelector("form");
+    deleteForm.setAttribute("action", url);
+    deleteForm.setAttribute("method", "post");
+  });
+</script>
+
+{% endblock %}

@@ -1,148 +1,182 @@
 <style>
-  /* .navbar {
-    background-color: #fff;
-    padding: 30px 3rem;
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  body{
+    font-family: "Poppins",sans-serif;
+  }  
+  :root{
+    --border: rgb(209, 209, 209);
+    --primary:#2d3cc7;
+    --black:#262932;
+    --shadow:rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+  @font-face {
+    font-family: "Jode";
+    src: url(../../static/fonts/Jode.ttf);
+  }
+  .nav{
+    display: flex;
+    align-items: center;
+    position: relative;
     width: 100%;
-    border-radius: 0;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  } */
-  .navbar-img{
-    border-radius: 50% !important;
-    border: 1px solid red;
+    padding: 0 40px;
+    height: 80px;
+    top: 0;
+    position: fixed;
+    background-color: var(--primary) !important;
+    justify-content: space-between;
+    z-index: 99;
+    padding: 0 30px;
+    background-color: transparent;
   }
-  .border{
-        border: 1px solid #b7bbbe !important;
-    }
-    .border-radius{
-        border-radius: 10px !important;
-    }
-  .navbar {
-      width: 95%;
-      padding: 10px 20px;
-      border-radius: 20px;
-      background-color: #fff;
-      border-color: #212038;
-      margin: 20px auto;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
-  .nav-link {
-    color: #212038 !important;
+  a,li{
+    list-style: none;
+    text-decoration: none;
+  }
+  .menu-navbar{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .menu-navbar li .navbar-link{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
     position: relative;
+    transition: all ease-in-out 0.3s;
   }
-  .active-link{
+
+  .nav .logo{
+    z-index: 999;
+  }
+  .nav .logo a{
+  font-family: "Mont",sans-serif;
+    font-size: 28px;
+    color: #ffffff !important;
+  }
+  @font-face {
+  font-family: "Mont";
+  src: url(../../static/fonts/Mont-HeavyDEMO.otf);
+}
+    .nav .logo{
+    font-family: "Jode",sans-serif;
+  }
+  .nav .menu-navbar{
+    gap: 30px;
+    margin-top: 10px;
+  }
+  .sign-btn{
+    background-color: #fff ;
+    padding: 10px 40px;
+    border-radius: 50px;
+    color: black !important;
+  }
+  .right-side-menu{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+  }
+  .user-profile-box img{
+    border-radius: 50px;
+  }
+  .logout-btn{
+    background-color: white !important;
+    color: var(--primary) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    gap: 2px;
+    }
+  .logout-btn:hover i{
+    right: -25px;
   }
-  .active-link:after {
-    content: "";
-    background-color: #212038;
+.logout-btn i{
+  color: var(--primary) !important;
+  transition: all ease-in-out 0.3s;
+  font-size: 18px;
+  position: absolute;
+  right: -20px;
+}
+.menu-icon{
+  display: none;
+}
+@media screen and (max-width:991px){
+  .menu-navbar{
     position: absolute;
     width: 100%;
-    height: 1px;
     left: 0;
-    transition: all ease-in-out 0.4s;
-    bottom: -9px;
+    top: -10px;
+    background-color: white;
+    align-items: center !important;
+    opacity: 0;
+    pointer-events: none;
+    justify-content: center !important;
+    transition: all ease-in-out 0.2s;
+        transform: translateY(15px);
+    height: 100vh;
+    flex-direction: column;
+    gap: unset !important;
+    padding: 0 20px;
   }
-  .logout-btn {
-        background-color: transparent;
-        border: 1px solid #212038;
-        padding: 10px 50px;
-        margin-left: 20px;
-        color: #212038;
-        border-radius: 50px;
-        transition: all ease-in-out 0.4s;
-      }
-
-      .logout-btn:hover {
-        border: 1px solid #212038;
-        background-color: #212038;
-        color: #6290c3;
-      }
-      @media screen and (max-width:991px){
-        .logo{
-          display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-        }
-        .navbar{
-          padding: 20px 0 !important;
-          justify-content: space-between;
-          display: flex;
-        }
-        .navbar-toggler:focus,
-      .navbar-toggler:active,
-      .navbar-toggler-icon:focus {
-        outline: none;
-        box-shadow: none;
-      }
-      .menu-icon::after {
-        content: "\2630"; /* Unicode character for the menu icon */
-      }
-
-      .menu-icon.closed::after {
-        content: "\2715"; /* Unicode character for the close icon */
-      }
-      .navbar .container-fluid {
-        text-align: right !important;
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-        flex-direction: column;
-      }
-      .nav-link:after{
-        all: unset;
-      }
-      .logo img{
-        width: 150px;
-      }
-      }
-      .navbar-nav{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-      }
+  .nav .menu-show{
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        pointer-events: unset !important;
+    }
+  .navbar-link{
+    font-size: 18px !important;
+    color: black !important;
+  }
+  .sign-btn{
+    background-color: var(--primary);
+    color: white !important;
+  }
+  .menu-icon{
+      display: block !important;
+    z-index: 9999;
+    right: 30px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    width: 50px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 30px;
+    cursor: pointer;
+    height: 50px;
+    }
+    .menu-icon::after {
+    content: unset !important;
+}
+}
 </style>
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
+<div class="nav">
     <div class="logo">
-      <a class="navbar-brand text-white" href="{% url 'members:dashboard' %}">
-        <img
-          src="../../static/images/logo/svg/logo-no-background.svg"
-          alt=""
-          width="230"
-      /></a>
-      <button
-        class="navbar-toggler menu-icon"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      ></button>
+      <a class="" href="{% url 'members:home' %}">
+        <span>Givein.Ai</span>
+      </a>
     </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
+      <ul class="menu-navbar">
+        <li class="">
           <a
-            href="{% url 'members:dashboard' %}"
-            class="nav-link font-weight-bold"
+            href="{% url 'members:wedding' %}"
+            class="navbar-link"
             >Home</a
           >
         </li>
-        <li class="nav-item">
+        <li class="">
           <a
             href="{% url 'members:about_us' %}"
-            class="nav-link font-weight-bold {% if '/about-us/' in request.path %}active-link{% endif %}"
-            >About Us</a
+            class=" {% if '/about-us/' in request.path %}active-link{% endif %} navbar-link"
+            >Our Journey</a
           >
         </li>
         {% if user.is_authenticated %}
-        <li class="nav-item">
+        <li class="">
           <a
             href="{% url 'members:user_profile' %}"
-            class="nav-link font-weight-bold {% if '/user-profile/' in request.path %}active-link{% endif %}"
+            class=" {% if '/user-profile/' in request.path %}active-link{% endif %} navbar-link"
             >My Account</a
           >
         </li>
@@ -150,59 +184,73 @@
       
 
       {% if not user.is_authenticated %}
-      <li class="nav-item">
+      <li class="">
         <a
           href="{% url 'members:login' %}"
-          class="nav-link font-weight-bold"
+          class="login-btn navbar-link"
           >Login</a
         >
       </li>
 
-      <li class="nav-item">
+      <li class="">
         <a
           href="{% url 'members:register' %}"
-          class="nav-link font-weight-bold"
+          class="sign-btn"
           >Sign up</a
         >
       </li>
       {% endif %}
 
     </ul>
-
       {% if user.is_authenticated %}
       <!-- <b class="text-dark">Hi, {{request.user}}</b> -->
 
-      <ul class="navbar-nav">
-        Hi, {{request.user}}
-        &nbsp;
+      <ul class="right-side-menu">
         <!-- Avatar -->
-        <li class="nav-item dropdown">
-          <a class="  d-flex align-items-center +" href="{% url 'members:user_profile' %}" id="navbarDropdownMenuLink"
+        <li class="">
+          <a class="user-profile-box" href="{% url 'members:user_profile' %}"
             role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="border navbar-img"
+            <img src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" class="border navbar-img"
               height="45" alt="Avatar" />
           </a>
 
         </li>
+        <a
+          class="logout-btn"
+          href="javascript:{document.getElementById('logout').submit()}"
+          >Logout<i class='bx bx-right-arrow-alt arrow-icon'></i></a
+        >
+        <form action="{% url 'members:logout' %}" method="POST" id="logout">
+          {% csrf_token %}
+          <input type="hidden" />
+        </form>
+        <div class="menu-icon" id="menu-icon">
+          <i class="bx bx-menu-alt-right"></i>
+      </div>
       </ul>
 
-      <a
-        class="btn logout-btn align-right"
-        href="javascript:{document.getElementById('logout').submit()}"
-        >Logout</a
-      >
-      <form action="{% url 'members:logout' %}" method="POST" id="logout">
-        {% csrf_token %}
-        <input type="hidden" />
-      </form>
       {% endif %}
-    </div>
-  </div>
-</nav>
+</div>
 <script>
-        $(document).ready(function () {
-        $(".navbar-toggler").click(function () {
-          $(".navbar-toggler").toggleClass("closed");
-        });
-      });
+
+// Get the menu icon element
+const menuIcon = document.getElementById('menu-icon');
+// Get the navigation element
+const navMenu = document.querySelector('.menu-navbar');
+
+// Add click event listener
+menuIcon.addEventListener('click', function() {
+    // Get the icon element
+    const icon = menuIcon.querySelector('i');
+    // Toggle between classes to change the icon
+    if (icon.classList.contains('bx-menu-alt-right')) {
+        icon.classList.remove('bx-menu-alt-right');
+        icon.classList.add('bx-x');
+    } else {
+        icon.classList.remove('bx-x');
+        icon.classList.add('bx-menu-alt-right');
+    }
+    navMenu.classList.toggle('menu-show');
+});
+
 </script>

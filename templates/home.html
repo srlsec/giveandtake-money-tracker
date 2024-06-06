@@ -1,383 +1,874 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block title %}Home {% endblock %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-{% block content %}
-<style>
-  body{
-        background-color: whitesmoke;
-        font-family: 'Poppins', sans-serif;
-    }
-  .table-container{
-    border-radius: 6px;
-    margin-bottom: 30px;
-    padding: 20px 0;
-    border: 1px solid rgba(0,0,0,.125);
-  }
-  .details-box{
-    background-color: #1a1b41;
-  }
-  .honeydraw{
-    color: #f1ffe7;
-  }
-  .bluelake{
-    color: #6290c3;
-  }
-  .btn-1{
-    width: 100%;
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <title>Givein.Ai -  The effortlessly manage event expenses intuitive platform.</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue:regular);
+
+body{
+    font-family: "Poppins",sans-serif !important;
+    overflow-x: hidden !important;
+}
+a,li{
+    list-style: none !important;
+    text-decoration: none !important;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --border: rgb(209, 209, 209);
+    --primary:#2d3cc7;
+    --black:#262932;
+    --shadow:rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+nav .navbar-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:30px;
+}
+nav .navbar-menu li,a,.services-btn{
+    font-size: 14px;
+    color: black;
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+}
+nav .navbar-menu li a{
     transition: all ease-in-out 0.3s;
-    color: #fff;
-    background-color: #1a1b41;
-    border: 1px solid white;
-
 }
-
-
-.btn-1:hover{
-    color: #1a1b41;
-    background-color: transparent;
-    border: 1px solid #1a1b41;
+nav .navbar-menu li a:hover{
+    color: var(--primary);
 }
-input{
+li a.active {
+    transition: all ease-in-out 0.3s;
+    color: var(--primary);
+  }
+  
+.login-btn i{
+  margin-top: 1px;
+  transition: all ease-in-out 0.3s;
+  right: 25px;
+  font-size: 18px;
+  position: absolute;
+}
+.login-btn:hover .arrow-icon{
+  right: 15px !important;
+}
+.login-btn{
+  transition: all ease-in-out 0.3s;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+    background-color: var(--primary) !important;
+    border-radius: 50px;
+    padding: 10px 50px;
+    justify-content: center !important;
+    color: white !important;
+}
+.sign-up{
+    border:1px solid var(--primary) !important;
+    border-radius: 50px;
+    padding: 10px 40px;
+    justify-content: center !important;
+    color: var(--primary);
+}
+.logo a{
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--primary);
+    font-family: "Mont",sans-serif;
+}
+@font-face {
+  font-family: "Mont";
+  src: url(../static/fonts/Mont-HeavyDEMO.otf);
+}
+.menu-icon{
+    cursor: pointer;
+    display: none;
+    z-index: 99;
+}
+.menu-icon i{
+    font-size: 30px;
+    color: rgb(22, 22, 22);
+}
+.hero h1{
+    font-weight: 800;
+    font-size: 3em;
+    color: #262932;
+}
+.hero h1 span{
+    color: var(--primary);
+}
+.hero{
+    padding: 15rem 0;
+    align-items: center;
+    justify-content: center;
+}
+.hero p{
+    font-size: 15px;
+    margin-top: 20px;
+}
+.hero-btn{
+    display: flex ;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    z-index: 1;
+}
+.hero-btn a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:150px;
+    font-size: 14px;    
+}
+.hero .btn-first{
+    background-color: var(--primary) !important;
+    color: white !important;
+    padding: 10px 0;
+    border-radius: 50px;
+}
+.hero .btn-second{
+    border:1px solid var(--primary) !important;
+    color: var(--primary) !important;
+    padding: 10px 0;
+    border-radius: 50px;
+}
+.hero .hero-text{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+.hero-img{
+    display: flex;
+    pointer-events: none;
+    align-items: center;
+    justify-content: flex-end;
+}
+section h5.title{
+    color: var(--primary);
+    font-size: 22px;
+    font-weight: 600;
+}
+section h2.subtitle{
+    color: var(--black);
+    font-weight: 800;
+    font-size: 40px;
+    text-align: center;
+}
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+    font-size: 20px;
+}
+.swiper-button-prev:after, .swiper-ltl .swiper-button-prev:after {
+    font-size: 20px;
+}
+.swiper-container {
+      width: 100%;
+      position: relative;
+      padding: 40px 0;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      height: 300px;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: absolute;
+      top: -10%;
+      transform: translateY(-0%);
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    .swiper-button-prev {
+      left: 10px;
+    }
+    .swiper-button-next {
+      right: 10px;
+    }
+    .feature-slider-container {
+      max-width: 100%; /* Adjust as needed */
+    }
+    .feature-items {
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      background-color: white;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-radius: 20px;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .feature-items h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .feature-items p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+.effort-feature h1{
+    color: #FC555E;
+}
+.customizable-budget h1{
+    color: #FDCF18;
+}
+.seamless h1{
+    color: #83D9FF;
+}
+.money-saving h1{
+    color: #D9B1EE;
+}
+.user-friendly h1{
+    color: #D94BDC;
+}
+.secure h1{
+    color: #409A7C;
+}
+.about .about-title{
+    font-size: 20px;
+    font-weight:400;
+    margin: 50px 0;
+    color: var(--primary);
+}
+.about-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.about img{
+    width: 350px;
+}
+.btn-primary{
+    background-color: var(--primary);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.who-we-are{
   width: 100%;
-  padding: 7px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-
-.page-item.active .page-link {
-        color: #fff !important;
-        background-color: #1a1b41 !important;
-        border-color: #1a1b41 !important; 
+.buttons{
+  display: flex;
+  gap: 20px;
+}
+.more-text-container-show{
+  opacity: 1 !important;
+  pointer-events: unset !important;
+}
+.more-text-container{
+  width: 600px;
+  height: 450px !important;
+  opacity: 0;
+  pointer-events: none;
+  background-color: white !important;
+  border-radius: 20px;
+  transition: all ease-in-out 0.2s;
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  flex-direction: column;
+  transform: translate(-50%,-50%) !important;
+  z-index: 99 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  padding: 20px 40px;
+}
+.more-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.more-close{
+  display: block !important;
+    z-index: 9999;
+    right: 20px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    width: 50px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 55px;
+    top: 20px;
+    font-size: 30px;
+    height: 50px;
+    position: fixed;
+}
+.more-open{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--primary);
+}
+.login-menu{
+  gap: 20px;
+  display: flex;
+  align-items: center;
+}
+@font-face {
+  font-family: "Coolvetica";
+  src: url(../static/fonts/coolvetica\ compressed\ hv.otf);
+}
+@media screen and (max-width:991px){
+  section{
+    padding: 100px 10px !important;
+    height: 100% !important;
+  }
+    .how-it-started .about-text{
+        order: 2;
+        padding: 40px 10px;
     }
-
-    .page-link {
-        color: #1a1b41 !important;
-        background-color: #fff !important;
-        border: 1px solid #dee2e6 !important; 
+    .about{
+        float: unset;
     }
-
-    .page-link:hover {
-        color: #fff !important;
-        background-color: #1a1b41 !important;
-        border-color: #1a1b41 !important; 
+section h2.subtitle{
+    font-size: 1.5em;
+}
+    .hero .hero-text h1{
+        font-size: 2em;
     }
-</style>
+    nav{
+        padding: 0 2rem;
+    }
+}
+@media screen and (max-width:765px){
+  nav{
+    justify-content: space-between !important;
+  }
+  .more-text-container{
+    width: 100% ;
+    min-height: 70% !important;
+    max-height: 100% !important;
+    padding: 30px 40px;
+  }
+    section h2.subtitle{
+        font-size: 1.3em;
+    }
+    .hero .row{
+        gap: 50px;
+    }
+    .hero .row .hero-img{
+        justify-content: center;
+    }
+    .hero .row img{
+        width: 80%;
+    }
+    .hero{
+        height: 100%;
+        margin-top: 30px;
+        padding: unset;
+    }
+    .hero h1{
+        font-size: 3em;
+    }
+    nav .navbar-menu{
+        position: absolute;
+        height: 300px;
+        width: 100%;
+        z-index: 9999;
+        background-color: white;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: all ease-in-out 0.2s;
+        transform: translateY(15px);
+        justify-content: flex-start;
+        padding: 50px 25px;
+        box-shadow: var(--shadow);
+        top: 0 !important;
+        right: 0;
+        left: 0;
+        opacity: 0 !important;
+        pointer-events: none;
+    }
+    nav .menu-show{
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        pointer-events: unset !important;
+    }
+    .service-dropdown-menu-nav{
+      left: 0;
+      z-index: 999;
+    }
+    .dropdown-menu-nav{
+        left: 0;
+    }
+    .dropdown-menu-nav li a,li{
+        justify-content: flex-start !important;
+    }
+    .logo a{
+        font-size: 28px;
+    }
+    .menu-icon{
+      display: block !important;
+    z-index: 9999;
+    right: 30px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    width: 50px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 30px;
+    height: 50px;
+    }
+    .row div{
+      margin: 30px 0;
+    }
+    section{
+      padding: 0 20px !important;
+    }
+}
+    </style>
+  </head>
+  <body>
+    <nav class="container">
+      <div class="logo">
+          <a href="#">Givein.Ai</a>
+      </div>
+      <ul class="navbar-menu">
+          <li><a href="#" class="nav-link">Home<span class="sr-only">(current)</span></a></li>
+          <li><a href="#about" class="nav-link">Our Journey</a></li>
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="services-btn m-1">Services</div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 mt-3 shadow rounded-box w-52">
+              <li><a>Item 1</a></li>
+              <li><a>Item 2</a></li>
+            </ul>
+          </div>
+      </ul>
+      <ul class="login-menu">
+        <i class='bx bx-bell' style='color:#2d3cc7; font-size: 24px; cursor: pointer;' ></i>
+        <li><a href="{% url 'members:login' %}" class="login-btn">Login<i class='bx bx-right-arrow-alt arrow-icon'></i></a></li>
+        <div class="menu-icon" id="menu-icon">
+          <i class="bx bx-menu-alt-right"></i>
+      </div>
+      
+      </ul>
+  </nav>
 
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-<script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-<script src='https://code.jquery.com/jquery-3.7.0.js'></script>
-<script src='https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js'></script>
-<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js" charset="utf-8"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
 
-<div class="container home-main">
-  <div class="row">
-
-    <!-- Total -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary details-box">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
-                            Total Contacts</div>
-                        <div class="h5 mb-0 font-weight-bold honeydraw">{{total_count}}</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="bi bi-person-fill fa-2x text-white"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  
-    <!-- Completed -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-success details-box">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">Amount received</div>
-
-                          {% if total_amount.amount__sum == None %}
-                          <div class="h5 mb-0 font-weight-bold honeydraw">0</div>
-                          {% else %}
-                            <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_amount.amount__sum }}</div>
-                          {% endif %}
-
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-white"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  
-    <!-- Not Started -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-info details-box">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
-                            AMOUNT PAID</div>
-                            
-                            {% if total_paid.amount__sum == None %}
-                            <div class="h5 mb-0 font-weight-bold honeydraw">0</div>
-                            {% else %}
-                              <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_paid.amount__sum }}</div>
-                            {% endif %}
-
-                            <!-- <button hx-get="{% url 'members:add_form' %}" hx-target="#dialog" class="btn btn-primary">
-                              Add
-                            </button> -->
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-white"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  
-    <!-- Pending Requests Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-warning details-box">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold honeydraw text-uppercase mb-1">
-                            AMOUNT PENDING</div>
-                        
-                          {% if total_pending.amount__sum == None %}
-                            <div class="h5 mb-0 font-weight-bold honeydraw">0</div>
-                          {% else %}
-                            <div class="h5 mb-0 font-weight-bold honeydraw">{{ total_pending.amount__sum }}</div>
-                          {% endif %}
-                        
-                    </div>
-                    <div class="col-auto">
-                        <i class="bi bi-clock fa-2x text-white"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
 
 
-  
-<div class="row table-container" style="background-color: #ffffff;">
-  <div class="row border-primary">
-    <form method="POST" action="/">
-      {% csrf_token %}
+  <section class="hero container" id="hero">
     <div class="row">
-      <div class="col">
-        <!-- {{form.name}} -->
-        <input name="name" type="text" class="form-control" placeholder="Name" required>
-      </div>
-      <div class="col">
-        <!-- {{form.address}} -->
-        <input name="address" type="text" class="form-control" placeholder="Address" required>
-      </div>
-      <div class="col">
-        <!-- {{form.amount}} -->
-        <input name="amount" type="text" class="form-control" placeholder="Amount" required>
-      </div>
-      <div class="col">
-        <button type="submit" class="btn-1 py-2" value="Create contact">Create</button>
-        <!-- <input class="btn login_btn create-contact" type="submit" value="Create contact"> -->
-      </div>
+        <div class="col-md-6 col-lg-5 hero-text">
+            <h1 class="hero-title">Your Ultimate Event 
+                <span>Expense Tracker.</span></h1>
+                <p class="hero-subtext">Empower your financial journey. Track, share, and manage expenses effortlessly. Be the hero of your financial story with our intuitive platform.</p>
+                <div class="hero-btn">
+                    <a href="#" class="btn-first">Sign Up</a>
+                    <a href="#" class="btn-second">Learn More</a>
+                </div>
+        </div>
+        <div class="col-md-6 col-lg-7 hero-img">
+            <img src="../static/images/img/undraw_transfer_money_re_6o1h.svg" class=" img-fluid" width="400">
+        </div>
     </div>
-  </form>
-</div>
-<hr class="mt-3">
+</section>
 
-  <table id="example" class="table  table-bordered " cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Address</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Date Created</th>
-          <th scope="col">Status</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
 
-      <tbody >
-        {% for task in tasks %}
-        <tr>
-          <td>{{task.name}}</td>
-          <td>{{task.address}}</td>
-          <td>{{task.amount}}</td>
-          <td>{{task.created|date:'Y-m-d'}}</td>
-          {% if task.complete == True %}
-            <td><button type="button" class="btn btn-success btn-sm">Completed</button></td>
-          {% endif %}
-          {% if task.complete == False %}
-            <td><button type="button" class="btn btn-warning btn-sm">Pending</button></td>
-          {% endif %}
-          <td>
-            <div class="contact-user-button">
-              <a
-                class="btn btn-sm"
-                hx-get="{% url 'members:update_form' task.id %}" hx-target="#dialog"
-                ><i class="bi bi-pencil-square"></i
-              ></a>
+<section class="container">
+  <div class="row">
+    <div class="col">
+      <div class="feature-slider-container">
+        <div class="swiper-container">
           
-
-              <button
-                class="btn btn-sm"
-                id="btn_delete"
-                type="button"
-                data-bs-url="{% url 'members:delete_task' task.id %}"
-                class="btn p-0"
-                data-bs-toggle="modal"
-                data-bs-target="#modal-delete"
-                data-bs-foodid="{{ task.id }}"
-                data-bs-foodname="{{ task }}"
-              >
-                <i class="bi bi-trash3"></i>
-              </button>
+          <div class="swiper-wrapper" data-aos="fade-up">
+            <div class="swiper-slide">
+              <div class="feature-items effort-feature">
+                <h1>Effortless Expense Tracking</h1>
+                <p>Stay organized by effortlessly recording every expense related to your event.</p>
+                <img src="../static/images/img/feature1.png" width="60">
+              </div>
             </div>
-          </td>
-          
-        </tr>
-        {% endfor %}
-      </tbody>
-
-  </table>
-</div>
-
-
-
-  <script>
-      $(document).ready(function() {
-  $('#example').dataTable();
-} );
-
-  </script>
-
-
-</div>
-
-<!-- Delete Modal -->
-<div id="modal-delete" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Delete contact</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body"></div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn delete-sec-btn"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <form>
-            {% csrf_token %}
-            <button id="food-delete" class="btn delete-sec-btn" type="submit">
-              Delete
-            </button>
-          </form>
+            <div class="swiper-slide">
+              <div class="feature-items customizable-budget">
+                <h1>Customizable Budgets</h1>
+                <p>Take control of your event finances with customizable budgets tailored to your specific needs.</p>
+                <img src="../static/images/img/feature2.png" width="60">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="feature-items seamless">
+                <h1>Seamless Collaboration</h1>
+                <p>Simplify event planning by collaborating with others in real-time.</p>
+                <img src="../static/images/img/feature3.png" width="60">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="feature-items money-saving">
+                <h1>Money-Saving Tips & Advice</h1>
+                <p>Discover expert tips and advice to make the most of your event budget.</p>
+                <img src="../static/images/img/feature4.png" width="60">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="feature-items secure">
+                <h1>Secure & Reliable</h1>
+                <p>Rest easy knowing that your financial data is protected by state-of-the-art security measures.</p>
+                <img src="../static/images/img/feature5.png" width="60">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="feature-items seamless user-friendly">
+                <h1>User-Friendly Interface</h1>
+                <p>Enjoy a seamless user experience with our intuitive interface designed for maximum ease of use.</p>
+                <img src="../static/images/img/feature6.png" width="60">
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-prev" data-aos="fade-left"></div>
+          <div class="swiper-button-next" data-aos="fade-right"></div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
-    </div>
-</div>
-
-
-<!-- Placeholder for the modal -->
-<div id="modal" class="modal fade">
-  <div id="dialog" class="modal-dialog" hx-target="this"></div>
-</div>
-
-<!-- Empty toast to show the message -->
-<div class="toast-container position-fixed top-0 end-0 p-3">
-  <div id="toast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive"
-    aria-atomic="true">
-    <div class="d-flex">
-      <div id="toast-body" class="toast-body"></div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-        aria-label="Close"></button>
     </div>
   </div>
 </div>
 
 
-<!-- Edit form new modal -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"></script>
 
+
+<section class="about mt-5 py-5" id="about">
+  <h5 class="title text-center" data-aos="fade-up">Our Jorney</div>
+      <h2 class="subtitle" data-aos="fade-up">
+          Discover Our Mission, <br> Meet Our Team
+      </h2>
+  <div class="container mt-5 pt-5">
+      <div class="row how-it-started">
+          <div class="col-lg-7 about-text">
+              <h5 class="title who-we-are" data-aos="fade-up">HOW IT STARTED?</h5>
+              <p data-aos="fade-up" class=" text-center">
+                In the daily grind of life, we encounter myriad challenges, from managing marriage ceremonies to housewarming celebrations, and even overseeing school management systems. Often, we find ourselves in the position of extending financial support to our loved ones, be they relatives or friends. However, meticulously recording these transactions in.....<button class="more-open">More</button>
+              </p>
+              <div class="buttons d-flex">
+                <a href="#" class="btn-primary" data-aos="fade-up">Talk With Us</a>
+              </div>
+
+              <div class="more-text-container">
+              <h5 class="title who-we-are" data-aos="fade-up">HOW IT STARTED?</h5>
+                <p class="more-text">
+                  In the daily grind of life, we encounter myriad challenges, from managing marriage ceremonies to housewarming celebrations, and even overseeing school management systems. Often, we find ourselves in the position of extending financial support to our loved ones, be they relatives or friends. However, meticulously recording these transactions in a traditional diary or notebook becomes a cumbersome task, especially for our elderly parents. With over 2000 entries or more to contend with, this duty consumes a considerable amount of their time and energy. Imagine the relief and efficiency that could be achieved by consolidating all these tasks into a single, user-friendly website. Such a platform would not only streamline the process but also alleviate the burden on our aging loved ones, allowing them to focus on more fulfilling endeavors.
+                </p>
+                <span class="more-close">
+                  <i class='bx bx-x'></i>
+                </span>
+              </div>
+          </div>
+          <div class="col-lg-5 started-img" data-aos="fade-up">
+              <img src="../static/images/img/undraw_startup_life_re_8ow9.svg" alt="" class="img-fluid float-end">
+          </div>
+      </div>
+      <div class="row mt-5 py-5">
+          <div class="col-lg-6 col-sm-12 " data-aos="fade-up">
+              <img src="../static/images/img/undraw_web_developer_re_h7ie.svg" alt="" class="img-fluid">
+          </div>
+          <div class="col-lg-6 col-sm-12 about-text">
+              <h5 class="title who-we-are" data-aos="fade-up">WHO WE ARE?</h5>
+              <p class=" text-center" data-aos="fade-up">
+
+                Behind the success of Savvy stand the dedicated efforts of our team members: Sarvind, Ghanashyam, and Sarathlal. Their unwavering commitment, tireless work ethic, and collective expertise have been the driving force propelling our vision forward.
+              </p>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class=" text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Company name
+          </h6>
+          <p>
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Settings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+<!-- End of .container -->
+
+
+
+      <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        
+
+        
+        {% for message in messages %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script> 
+                  alertify.set('notifier','position', 'bottom-right');
+                  alertify.error('{{message}}');
+                </script>
+            {% endif %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <script> 
+                  alertify.set('notifier','position', 'bottom-right');
+                  alertify.success('{{message}}');
+                </script>
+            {% endif %}
+
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                <script> 
+                  alertify.set('notifier','position', 'bottom-right');
+                  alertify.notify('{{message}}');
+                </script>
+            {% endif %}
+                
+        {% endfor %}
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  </body>
+
+
+</html>
 <script>
-  ; (function () {
-    const modal = new bootstrap.Modal(document.getElementById("modal"))
-
-    htmx.on("htmx:afterSwap", (e) => {
-      // Response targeting #dialog => show the modal
-      if (e.detail.target.id == "dialog") {
-        modal.show()
-      }
-    })
-
-    htmx.on("htmx:beforeSwap", (e) => {
-      // Empty response targeting #dialog => hide the modal
-      if (e.detail.target.id == "dialog" && !e.detail.xhr.response) {
-        modal.hide()
-        e.detail.shouldSwap = false
-
-        location.reload();
-      }
-    })
-
-    // Remove dialog content after hiding
-    htmx.on("hidden.bs.modal", () => {
-      document.getElementById("dialog").innerHTML = ""
-    })
-  })()
-</script>
-  
-<script>
-  $(document).ready(function () {
-  $('#dtBasicExample').DataTable();
-  $('.dataTables_length').addClass('bs-select');
+  AOS.init({
+    duration:1000 
 });
+
+var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      breakpoints: {
+        991: {
+          slidesPerView: 3
+        },
+        768: {
+          slidesPerView: 2
+        },
+        320: {
+          slidesPerView: 1
+        }
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  ScrollReveal().reveal('.logo',{delay:150});
+ScrollReveal().reveal('.navbar-menu',{delay:300});
+ScrollReveal().reveal('.login-menu',{delay:300});
+ScrollReveal().reveal('.hero-title', { delay: 350 });
+ScrollReveal().reveal('.hero-subtext', { delay: 400 });
+ScrollReveal().reveal('.btn-first', { delay: 450 });
+ScrollReveal().reveal('.btn-second', { delay: 500 });
+ScrollReveal().reveal('.hero-img', { delay: 500 });
+ScrollReveal().reveal('.title', { delay: 600 });
+
+
+// Get the menu icon element
+const menuIcon = document.getElementById('menu-icon');
+// Get the navigation element
+const navMenu = document.querySelector('.navbar-menu');
+
+// Add click event listener
+menuIcon.addEventListener('click', function() {
+    // Get the icon element
+    const icon = menuIcon.querySelector('i');
+    // Toggle between classes to change the icon
+    if (icon.classList.contains('bx-menu-alt-right')) {
+        icon.classList.remove('bx-menu-alt-right');
+        icon.classList.add('bx-x');
+    } else {
+        icon.classList.remove('bx-x');
+        icon.classList.add('bx-menu-alt-right');
+    }
+    navMenu.classList.toggle('menu-show');
+});
+
 </script>
-
-
-<!-- Delete contact Popup -->
-<script>
-  const deleteModal = document.getElementById("modal-delete");
-
-  deleteModal.addEventListener("show.bs.modal", (event) => {
-    const button = event.relatedTarget;
-    const foodName = button.getAttribute("data-bs-foodname");
-    const url = button.getAttribute("data-bs-url");
-    const modalBodyInput = deleteModal.querySelector(".modal-body ");
-
-    modalBodyInput.textContent = `Confirm deletion of ${foodName}`;
-
-    const deleteForm = deleteModal.querySelector("form");
-    deleteForm.setAttribute("action", url);
-    deleteForm.setAttribute("method", "post");
-  });
-</script>
-
-<script>
-  $(document).ready(function() {
-     $('#myTable').DataTable();
-   });
-</script>
-
-{% endblock %}
